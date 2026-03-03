@@ -1,0 +1,113 @@
+.navbar {
+  --glass-bg: rgba(15, 23, 42, 0.55);      // slate-900 mit Transparenz
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --text: #e5e7eb;
+  --text-muted: #cbd5e1;
+  --accent: #7c3aed;                        // violett
+  --accent-2: #06b6d4;                      // cyan
+
+  position: sticky;
+  top: 1rem;
+  z-index: 1000;
+
+  width: min(1100px, calc(100% - 2rem));
+  margin-inline: auto;
+  padding: 0.75rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  background:
+    linear-gradient(120deg, rgba(124, 58, 237, 0.14), rgba(6, 182, 212, 0.08)),
+    var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.navbar__header {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+}
+
+.navbar__brand {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  transition: color 180ms ease;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.navbar__links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+
+  a {
+    position: relative;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.35rem 0.2rem;
+    transition: color 180ms ease;
+    font-size: 20px;
+
+    &::after {
+      content: '';
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 200ms ease;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 999px;
+    }
+
+    &:hover {
+      color: #fff;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba(124, 58, 237, 0.7);
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    top: 0.5rem;
+    border-radius: 14px;
+    padding: 0.65rem 0.8rem;
+  }
+
+  .navbar__brand {
+    font-size: 1.3rem;
+  }
+
+ 
+}
